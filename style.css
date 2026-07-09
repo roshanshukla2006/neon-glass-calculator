@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Orbitron',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#020617,#0f172a,#111827,#1e293b);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:#00e5ff;
+    border-radius:50%;
+    filter:blur(170px);
+    opacity:.18;
+    top:-120px;
+    left:-120px;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    background:#7c3aed;
+    border-radius:50%;
+    filter:blur(170px);
+    opacity:.18;
+    bottom:-120px;
+    right:-120px;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.calculator{
+    position:relative;
+    width:390px;
+    padding:28px;
+    border-radius:35px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:
+    0 25px 45px rgba(0,0,0,.45),
+    0 0 30px rgba(0,229,255,.25);
+    overflow:hidden;
+    z-index:1;
+}
+
+.calculator::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:35px;
+    background:linear-gradient(45deg,#00e5ff,#7c3aed,#00e5ff,#ff00c8,#00e5ff);
+    background-size:400%;
+    animation:borderGlow 7s linear infinite;
+    z-index:-2;
+}
+
+.calculator::after{
+    content:"";
+    position:absolute;
+    inset:3px;
+    border-radius:32px;
+    background:rgba(10,15,25,.92);
+    z-index:-1;
+}
+
+@keyframes borderGlow{
+    0%{background-position:0 0;}
+    100%{background-position:400% 0;}
+}
+
+.display{
+    width:100%;
+    height:90px;
+    border:none;
+    outline:none;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:25px;
+    text-align:right;
+    font-size:2rem;
+    color:#00f7ff;
+    background:rgba(255,255,255,.05);
+    box-shadow:inset 0 0 18px rgba(255,255,255,.08),0 0 18px rgba(0,247,255,.18);
+}
+
+.display::placeholder{
+    color:#8ceeff;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.btn{
+    height:70px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    cursor:pointer;
+    font-size:1.25rem;
+    color:#fff;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    transition:.3s;
+    box-shadow:inset 0 0 10px rgba(255,255,255,.05),0 8px 18px rgba(0,0,0,.35);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 18px #00e5ff,0 10px 25px rgba(0,0,0,.45);
+}
+
+.btn:active{
+    transform:scale(.96);
+}
+
+.number{
+    background:rgba(255,255,255,.08);
+    color:#ffffff;
+}
+
+.number:hover{
+    background:#00e5ff;
+    color:#000;
+    box-shadow:0 0 20px #00e5ff,0 0 45px #00e5ff;
+}
+
+.operator{
+    background:linear-gradient(135deg,#7c3aed,#5b21b6);
+    color:#fff;
+}
+
+.operator:hover{
+    background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+    box-shadow:0 0 20px #7c3aed,0 0 45px #7c3aed;
+}
+
+.ac{
+    background:linear-gradient(135deg,#ff4d4d,#ff1e56);
+    color:#fff;
+}
+
+.ac:hover{
+    box-shadow:0 0 20px #ff1e56,0 0 45px #ff1e56;
+}
+
+.delete{
+    background:linear-gradient(135deg,#ff9800,#ff6d00);
+    color:#fff;
+}
+
+.delete:hover{
+    box-shadow:0 0 20px #ff9800,0 0 45px #ff9800;
+}
+
+.equal{
+    background:linear-gradient(135deg,#00e5ff,#00bcd4);
+    color:#000;
+    font-weight:700;
+    grid-column: span 2;
+}
+
+.equal:hover{
+    box-shadow:0 0 20px #00e5ff,0 0 45px #00e5ff;
+}
+
+.zero{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+}
+
+.zero:hover{
+    background:#00e5ff;
+    color:#000;
+    box-shadow:0 0 20px #00e5ff,0 0 45px #00e5ff;
+}
+
+.calculator{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.display{
+    text-shadow:0 0 8px #00e5ff,0 0 20px #00e5ff;
+}
+
+@media(max-width:450px){
+
+    .calculator{
+        width:95%;
+        padding:20px;
+    }
+
+    .btn{
+        height:60px;
+        font-size:1.1rem;
+    }
+
+    .display{
+        height:80px;
+        font-size:1.7rem;
+    }
+}
+
+.btn{
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    top:-120%;
+    left:-120%;
+    width:250%;
+    height:250%;
+    background:linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,.45),
+        transparent 70%
+    );
+    transform:rotate(25deg);
+    transition:.7s;
+}
+
+.btn:hover::before{
+    top:100%;
+    left:100%;
+}
+
+.btn::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.08);
+    pointer-events:none;
+}
+
+.calculator::before{
+    animation:borderGlow 5s linear infinite;
+}
+
+.calculator:hover{
+    transform:scale(1.02);
+    transition:.4s;
+}
+
+.display{
+    letter-spacing:2px;
+    font-weight:600;
+}
+
+.display:focus{
+    outline:none;
+}
+
+.buttons{
+    perspective:1000px;
+}
+
+.btn:hover{
+    transform:translateY(-6px) rotateX(10deg);
+}
+
+.btn:active{
+    transform:scale(.93);
+}
+
+.equal{
+    animation:equalGlow 2s infinite alternate;
+}
+
+@keyframes equalGlow{
+    from{
+        box-shadow:0 0 15px #00e5ff;
+    }
+    to{
+        box-shadow:0 0 35px #00e5ff,0 0 70px #00e5ff;
+    }
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.02);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+.display{
+    animation:pulse 3s infinite;
+}
+
+::-webkit-scrollbar{
+    width:0;
+}
+
+@media(max-width:390px){
+
+    .calculator{
+        padding:18px;
+        border-radius:25px;
+    }
+
+    .buttons{
+        gap:12px;
+    }
+
+    .btn{
+        height:56px;
+        font-size:1rem;
+        border-radius:15px;
+    }
+
+    .display{
+        height:75px;
+        font-size:1.5rem;
+        margin-bottom:18px;
+    }
+}
